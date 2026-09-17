@@ -37,19 +37,6 @@
   </script>
 
   <style>
-    /* Consistent Smooth Scrolling & Scroll Margins for Fixed Header */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    section[id], #skills {
-      scroll-margin-top: 100px;
-    }
-
-    #home {
-      scroll-margin-top: 80px;
-    }
-
     /* Custom cinematic accents and subtle effects */
     .bg-grid-pattern {
       background-size: 40px 40px;
@@ -103,7 +90,7 @@
         </div>
       </a>
 
-      <!-- Desktop Nav (Single clean horizontal row without wrapping) -->
+      <!-- Desktop Nav (One clean horizontal line without wrapping) -->
       <nav class="hidden lg:flex items-center gap-5 xl:gap-8 text-sm font-medium text-slate-400 whitespace-nowrap">
         <a href="#home" class="hover:text-white transition-colors">Home</a>
         <a href="#about" class="hover:text-white transition-colors">About Me</a>
@@ -143,7 +130,7 @@
 
   <main class="relative z-10 pt-20">
     <!-- 1. HERO SECTION -->
-    <section id="home" class="min-h-[calc(100vh-5rem)] flex items-center justify-center relative px-4 sm:px-6 py-12 sm:py-16">
+    <section id="home" class="min-h-[85vh] flex items-center justify-center relative px-4 sm:px-6 py-20">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Status Pill -->
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/40 border border-purple-500/30 text-purple-300 text-xs font-medium tracking-wide mb-8">
@@ -180,7 +167,7 @@
     </section>
 
     <!-- 2. ABOUT ME SECTION -->
-    <section id="about" class="pt-6 pb-16 sm:pt-8 sm:pb-20 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50">
+    <section id="about" class="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50 scroll-mt-20">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
@@ -257,7 +244,7 @@
             <div class="pt-4 flex flex-wrap items-center gap-3.5">
               <!-- View Resume Button (Opens in New Tab) -->
               <a 
-                href="https://drive.google.com/file/d/1owIMzyuz4JbONk0T5BBihIvRErwmjHd1/view" 
+                href="https://drive.google.com/file/d/1i3Q665nS5tU5PLMuiigDTuRlvXEJ5E-G/view" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-500 hover:to-blue-500 transition-all duration-300 shadow-lg shadow-purple-600/25 hover:scale-[1.02] border border-purple-400/30"
@@ -267,12 +254,12 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                 </svg>
                 <span>View Resume</span>
-                <svg class="w-3.5 h-3.5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 2h10a2 2 0 0 02-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                <svg class="w-3.5 h-3.5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
 
               <!-- Download Resume Button (Direct Download Link) -->
               <a 
-                href="https://drive.google.com/uc?export=download&id=1owIMzyuz4JbONk0T5BBihIvRErwmjHd1" 
+                href="https://drive.google.com/uc?export=download&id=1i3Q665nS5tU5PLMuiigDTuRlvXEJ5E-G" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 download="Radheshyam_Vathada_Resume.pdf"
@@ -296,12 +283,12 @@
       </div>
     </section>
 
-    <!-- 3. MY WORK SECTION -->
-    <section id="my-work" class="pt-6 pb-16 sm:pt-8 sm:pb-20 px-4 sm:px-6 border-t border-white/5">
+    <!-- 3. MY WORK SECTION (Clean Responsive Vertical Layout, 1-col on mobile, 2-col on desktop) -->
+    <section id="my-work" class="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/5 scroll-mt-20">
       <div class="max-w-6xl mx-auto">
         
         <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-3">
             Portfolio
           </div>
@@ -349,11 +336,11 @@
     </section>
 
     <!-- 4. COMBINED SECTION: CAREER JOURNEY & TECHNICAL MASTERY -->
-    <section id="experience" class="pt-6 pb-16 sm:pt-8 sm:pb-20 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50">
+    <section id="experience" class="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50 scroll-mt-20">
       <div class="max-w-7xl mx-auto">
         
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-3">
             Experience &amp; Expertise
           </div>
@@ -474,8 +461,8 @@
           <!-- Subtle Divider on Mobile -->
           <div class="block lg:hidden w-full h-px bg-white/10 my-6"></div>
 
-          <!-- RIGHT COLUMN: TECHNICAL MASTERY -->
-          <div id="skills" class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10 xl:pl-12">
+          <!-- RIGHT COLUMN: TECHNICAL MASTERY (lg:col-span-6 with thin vertical divider on desktop) -->
+          <div id="skills" class="lg:col-span-6 lg:border-l lg:border-white/10 lg:pl-10 xl:pl-12 scroll-mt-24">
             <div class="flex items-center gap-3 mb-8">
               <div class="w-9 h-9 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-400 flex-shrink-0">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
@@ -653,11 +640,11 @@
     </section>
 
     <!-- 5. EDUCATION JOURNEY SECTION -->
-    <section id="education" class="pt-6 pb-16 sm:pt-8 sm:pb-20 px-4 sm:px-6 border-t border-white/5">
+    <section id="education" class="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/5 scroll-mt-20">
       <div class="max-w-4xl mx-auto">
         
         <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs font-semibold tracking-wider uppercase mb-3">
             Academic &amp; Professional Qualifications
           </div>
@@ -769,11 +756,11 @@
     </section>
 
     <!-- 6. CONTACT SECTION -->
-    <section id="contact" class="pt-6 pb-16 sm:pt-8 sm:pb-20 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50">
+    <section id="contact" class="py-20 sm:py-24 px-4 sm:px-6 border-t border-white/5 bg-[#090c14]/50 scroll-mt-20">
       <div class="max-w-4xl mx-auto">
         
         <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-14">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-3">
             Contact
           </div>
@@ -1229,9 +1216,7 @@
       }
     });
 
-    // 4. Smooth scrolling for anchor links with consistent navbar offset
-    const mobileMenu = document.getElementById('mobileMenu');
-
+    // 4. Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -1239,14 +1224,10 @@
           const targetElem = document.querySelector(targetId);
           if (targetElem) {
             e.preventDefault();
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-              mobileMenu.classList.add('hidden');
-            }
-            if (targetId === '#home') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-              targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            targetElem.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
           }
         }
       });
@@ -1254,6 +1235,7 @@
 
     // 5. Mobile Navigation Menu Toggle
     const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (menuBtn && mobileMenu) {
