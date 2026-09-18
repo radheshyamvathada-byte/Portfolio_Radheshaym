@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ge<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -65,9 +65,52 @@
       from { opacity: 0; transform: scale(0.96) translateY(8px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
-    .modal-animate {
-      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
+    /* Skills proficiency animation */
+.skill-card {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card.skill-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 10px 30px -12px rgba(139, 92, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.skill-bar {
+  width: 0;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-card.skill-visible .skill-bar {
+  width: var(--skill-level);
+}
+
+.skill-icon {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card,
+  .skill-bar,
+  .skill-icon {
+    transition: none;
+  }
+}
   </style>
 </head>
 <body class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-purple-600 selection:text-white relative overflow-x-hidden">
@@ -469,11 +512,13 @@
               </div>
               <div>
                 <h3 class="font-display text-xl sm:text-2xl font-bold text-white">Technical Mastery</h3>
-                <p class="text-xs text-slate-400">Software toolkit &amp; 5-star proficiency matrix</p>
+                <p class="text-xs text-slate-400">Software toolkit &amp; creative expertise</p>
               </div>
             </div>
 
-            <!-- Group 1: Adobe & Design Tools -->
+  
+
+                          <!-- Group 1: Adobe & Design Tools -->
             <div class="space-y-4 mb-8">
               <div class="flex items-center justify-between pb-2 border-b border-white/5">
                 <h4 class="text-xs font-bold uppercase tracking-widest text-purple-400">Adobe &amp; Design Tools</h4>
@@ -481,82 +526,97 @@
               </div>
 
               <!-- After Effects -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center font-mono font-bold text-xs text-purple-300">Ae</span>
-                  <span class="text-sm font-semibold text-white">After Effects</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 95%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center font-mono font-bold text-xs text-purple-300">Ae</span>
+                    <span class="text-sm font-semibold text-white">After Effects</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Expert</span>
                 </div>
-                <div class="flex items-center gap-1 text-amber-400 text-sm">
-                  <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Premiere Pro -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center font-mono font-bold text-xs text-purple-300">Pr</span>
-                  <span class="text-sm font-semibold text-white">Premiere Pro</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 85%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center font-mono font-bold text-xs text-purple-300">Pr</span>
+                    <span class="text-sm font-semibold text-white">Premiere Pro</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Photoshop -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">Ps</span>
-                  <span class="text-sm font-semibold text-white">Photoshop</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 85%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">Ps</span>
+                    <span class="text-sm font-semibold text-white">Photoshop</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Illustrator -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-orange-950/60 border border-orange-500/30 flex items-center justify-center font-mono font-bold text-xs text-orange-300">Ai</span>
-                  <span class="text-sm font-semibold text-white">Illustrator</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 85%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">Ai</span>
+                    <span class="text-sm font-semibold text-white">Illustrator</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Blender 3D -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-amber-950/60 border border-amber-500/30 flex items-center justify-center font-mono font-bold text-xs text-amber-300">3D</span>
-                  <span class="text-sm font-semibold text-white">Blender 3D</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 65%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">3D</span>
+                    <span class="text-sm font-semibold text-white">Blender 3D</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Intermediate</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Cinema 4D -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center font-mono font-bold text-xs text-cyan-300">C4</span>
-                  <span class="text-sm font-semibold text-white">Cinema 4D</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 60%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">C4D</span>
+                    <span class="text-sm font-semibold text-white">Cinema 4D</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Intermediate</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
-              <!-- Unreal Engine 5 -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-600 flex items-center justify-center font-mono font-bold text-xs text-slate-200">UE</span>
-                  <span class="text-sm font-semibold text-white">Unreal Engine 5</span>
-                </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span>
-                </div>
-              </div>
             </div>
+
 
             <!-- Group 2: AI & Creative Tools -->
             <div class="space-y-4">
@@ -566,70 +626,82 @@
               </div>
 
               <!-- AI Image Generation -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-300 text-xs font-bold">IMG</span>
-                  <span class="text-sm font-semibold text-white">AI Image Generation</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 80%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">IMG</span>
+                    <span class="text-sm font-semibold text-white">AI Image Generation</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- AI Video Generation -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-300 text-xs font-bold">VID</span>
-                  <span class="text-sm font-semibold text-white">AI Video Generation</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 90%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">VDO</span>
+                    <span class="text-sm font-semibold text-white">AI Video Generation</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- AI Creative Tools & Prompting -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-xs font-bold">PRM</span>
-                  <span class="text-sm font-semibold text-white">AI Creative Tools &amp; Prompting</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 80%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">PMT</span>
+                    <span class="text-sm font-semibold text-white">AI Creative Tools &amp; Prompting</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Canva AI -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-teal-950/60 border border-teal-500/30 flex items-center justify-center text-teal-300 text-xs font-bold">CN</span>
-                  <span class="text-sm font-semibold text-white">Canva AI</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 80%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center font-mono font-bold text-xs text-blue-300">CAI</span>
+                    <span class="text-sm font-semibold text-white">Canva AI</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
               <!-- Google AI / Gemini -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-blue-950/60 border border-blue-500/30 flex items-center justify-center text-blue-300 text-xs font-bold">GO</span>
-                  <span class="text-sm font-semibold text-white">Google AI / Gemini</span>
+              <div class="skill-card bg-[#0e121b] p-3.5 rounded-xl card-border" style="--skill-level: 75%;">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <span class="skill-icon w-8 h-8 rounded-lg bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center font-mono font-bold text-xs text-cyan-300">AI</span>
+                    <span class="text-sm font-semibold text-white">Google AI / Gemini</span>
+                  </div>
+                  <span class="text-[11px] text-purple-300 font-medium">Advanced</span>
                 </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span>
+
+                <div class="mt-3 h-[5px] rounded-full bg-white/5 overflow-hidden">
+                  <div class="skill-bar"></div>
                 </div>
               </div>
 
-              <!-- Automation / n8n AI -->
-              <div class="bg-[#0e121b] p-3.5 rounded-xl card-border flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <span class="w-8 h-8 rounded-lg bg-rose-950/60 border border-rose-500/30 flex items-center justify-center text-rose-300 text-xs font-bold">N8</span>
-                  <span class="text-sm font-semibold text-white">Automation / n8n AI</span>
-                </div>
-                <div class="flex items-center gap-1 text-sm">
-                  <span class="text-amber-400">★</span><span class="text-amber-400">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span><span class="text-slate-600">★</span>
-                </div>
-              </div>
+            
+
             </div>
 
           </div>
@@ -1248,6 +1320,29 @@
           mobileMenu.classList.add('hidden');
         });
       });
+    }
+
+    // Skills scroll-reveal animation
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    if (skillCards.length) {
+      const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardIndex = Array.from(skillCards).indexOf(entry.target);
+
+            setTimeout(() => {
+              entry.target.classList.add('skill-visible');
+            }, Math.max(0, cardIndex) * 100);
+
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      skillCards.forEach(card => skillObserver.observe(card));
     }
   </script>
 </body>
