@@ -108,6 +108,74 @@ ge<!DOCTYPE html>
     transition: none;
   }
 }
+    /* ================================
+   AMBIENT BACKGROUND ANIMATION
+   ================================ */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(139, 92, 246, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(59, 130, 246, 0.10),
+      transparent 35%
+    );
+  animation: ambientFloat 12s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes ambientFloat {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 50px 50px, 50px 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after {
+    animation: none;
+  }
+}
   </style>
 </head>
 <body class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-purple-600 selection:text-white relative overflow-x-hidden">
