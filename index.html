@@ -37,44 +37,42 @@ ge<!DOCTYPE html>
   </script>
 
   <style>
-    /* Custom cinematic accents and subtle effects */
-    .bg-grid-pattern {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    }
-    
-    .glow-radial {
-      background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%);
-    }
+    /* ================================
+   HERO TEXT REVEAL ANIMATION
+   ================================ */
 
-    .card-border {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .card-border:hover {
-      border-color: rgba(139, 92, 246, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.25);
-      transform: translateY(-2px);
-    }
-
-    /* Modal fade in animation */
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.96) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    /* Skills proficiency animation */
-.skill-card {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+.hero-content > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroReveal 0.8s ease-out forwards;
 }
 
-.skill-card.skill-visible {
-  opacity: 1;
-  transform: translateY(0);
+.hero-content > *:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.hero-content > *:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.hero-content > *:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.hero-content > *:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes heroReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .skill-card:hover {
