@@ -48,6 +48,143 @@ ge<!DOCTYPE html>
     .glow-radial {
       background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.2) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%);
     }
+    /* =========================================
+   CINEMATIC ANIMATED BACKGROUND
+   ========================================= */
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+/* Purple glow */
+.orb-purple {
+  width: 480px;
+  height: 480px;
+  background: rgba(139, 92, 246, 0.30);
+  top: 5%;
+  left: -160px;
+  animation: floatPurple 14s ease-in-out infinite alternate;
+}
+
+/* Blue glow */
+.orb-blue {
+  width: 430px;
+  height: 430px;
+  background: rgba(59, 130, 246, 0.25);
+  top: 40%;
+  right: -140px;
+  animation: floatBlue 17s ease-in-out infinite alternate;
+}
+
+/* Cyan glow */
+.orb-cyan {
+  width: 350px;
+  height: 350px;
+  background: rgba(6, 182, 212, 0.18);
+  bottom: -80px;
+  left: 35%;
+  animation: floatCyan 16s ease-in-out infinite alternate;
+}
+
+@keyframes floatPurple {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(220px, 120px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(100px, 300px, 0) scale(0.9);
+  }
+}
+
+@keyframes floatBlue {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-220px, -100px, 0) scale(1.15);
+  }
+
+  100% {
+    transform: translate3d(-80px, 180px, 0) scale(0.9);
+  }
+}
+
+@keyframes floatCyan {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(180px, -150px, 0) scale(1.2);
+  }
+
+  100% {
+    transform: translate3d(-150px, -50px, 0) scale(0.9);
+  }
+}
+
+/* Floating particle field */
+.particle-layer {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px),
+    radial-gradient(circle, rgba(139,92,246,0.35) 1px, transparent 1px);
+
+  background-size: 90px 90px, 140px 140px;
+  background-position: 0 0, 40px 60px;
+
+  opacity: 0.22;
+
+  animation: particleDrift 25s linear infinite;
+}
+
+@keyframes particleDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(90px, 90px, 0);
+  }
+}
+
+/* Keep website content above animation */
+header,
+main,
+footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-orb,
+  .particle-layer {
+    animation: none;
+  }
+}
 
     .card-border {
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -68,13 +205,17 @@ ge<!DOCTYPE html>
     /* Skills proficiency animation */
 .skill-card {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(35px) scale(0.97);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .skill-card.skill-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .skill-card:hover {
@@ -85,10 +226,10 @@ ge<!DOCTYPE html>
 
 .skill-bar {
   width: 0;
-  height: 5px;
+  height: 6px;
   border-radius: 999px;
   background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .skill-card.skill-visible .skill-bar {
@@ -111,13 +252,58 @@ ge<!DOCTYPE html>
     transition: none;
   }
 }
-  </style>
+  <style>
+/* Mouse Interactive Glow */
+.mouse-glow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+
+  transform: translate3d(
+    calc(var(--mouse-x, 50vw) - 160px),
+    calc(var(--mouse-y, 50vh) - 160px),
+    0
+  );
+
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.28) 0%,
+    rgba(59, 130, 246, 0.14) 30%,
+    rgba(6, 182, 212, 0.06) 50%,
+    transparent 72%
+  );
+
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+</style>
+
 </head>
 <body class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-purple-600 selection:text-white relative overflow-x-hidden">
+  <div id="mouseGlow" class="mouse-glow"></div>
 
   <!-- Ambient Glow & Grid Layer -->
-  <div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-60"></div>
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-50"></div>
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] glow-radial pointer-events-none"></div>
+  <!-- Cinematic Animated Background -->
+<div class="animated-bg">
+
+  <!-- Floating light orbs -->
+  <div class="ambient-orb orb-purple"></div>
+  <div class="ambient-orb orb-blue"></div>
+  <div class="ambient-orb orb-cyan"></div>
+
+  <!-- Floating particles -->
+  <div class="particle-layer"></div>
+
+</div>
 
   <!-- Header / Navigation -->
   <header class="fixed top-0 left-0 w-full z-40 bg-[#07090e]/85 backdrop-blur-md border-b border-white/5">
@@ -1344,6 +1530,34 @@ ge<!DOCTYPE html>
 
       skillCards.forEach(card => skillObserver.observe(card));
     }
+    // =========================================
+// INTERACTIVE MOUSE GLOW
+// =========================================
+
+const mouseGlow = document.getElementById("mouseGlow");
+
+if (mouseGlow) {
+
+  document.addEventListener("mousemove", function (event) {
+
+    document.documentElement.style.setProperty(
+      "--mouse-x",
+      event.clientX + "px"
+    );
+
+    document.documentElement.style.setProperty(
+      "--mouse-y",
+      event.clientY + "px"
+    );
+
+    mouseGlow.style.opacity = "1";
+  });
+
+  document.addEventListener("mouseleave", function () {
+    mouseGlow.style.opacity = "0";
+  });
+
+}
   </script>
 </body>
 </html>
