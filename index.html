@@ -44,7 +44,7 @@ ge<!DOCTYPE html>
 #home > div > * {
     opacity: 0;
     transform: translateY(30px);
-    animation: heroReveal 0.8s ease-out forwards;
+    animation: heroReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 #home > div > *:nth-child(1) {
@@ -66,7 +66,7 @@ ge<!DOCTYPE html>
 @keyframes heroReveal {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
 
     to {
@@ -182,13 +182,13 @@ body::after {
 
 .card-border {
     transition:
-        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
 }
 
 .card-border:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
     border-color: rgba(139, 92, 246, 0.45);
     box-shadow: 0 18px 45px -18px rgba(139, 92, 246, 0.35);
 }
@@ -222,10 +222,10 @@ body::after {
 
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(25px);
     transition:
-        opacity 0.8s ease,
-        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1s ease,
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-reveal.revealed {
