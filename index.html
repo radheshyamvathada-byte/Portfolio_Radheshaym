@@ -216,6 +216,30 @@ body::after {
         transition: none;
     }
 } 
+    /* ================================
+   ANIMATION 3 - SCROLL REVEAL
+   ================================ */
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
   </style>
 </head>
 <body class="bg-[#07090e] text-slate-200 font-sans antialiased selection:bg-purple-600 selection:text-white relative overflow-x-hidden">
@@ -1449,6 +1473,35 @@ body::after {
 
       skillCards.forEach(card => skillObserver.observe(card));
     }
+    // =================================
+// ANIMATION 3 - SECTION SCROLL REVEAL
+// =================================
+
+const revealSections = document.querySelectorAll(
+  '#my-work, #about, #experience, #skills, #education, #contact'
+);
+
+revealSections.forEach(section => {
+  section.classList.add('scroll-reveal');
+});
+
+const scrollRevealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealSections.forEach(section => {
+  scrollRevealObserver.observe(section);
+});
   </script>
 </body>
 </html>
